@@ -1,6 +1,5 @@
 import ReminderCard from "../models/ReminderCard";
 import { Request, Response } from "express";
-import mongoose from "mongoose";
 
 export default {
   addReminder: async (req: Request, res: Response) => {
