@@ -4,7 +4,11 @@ import mongoose from "mongoose";
 import morgan from "morgan";
 import dotenv from "dotenv";
 
+import reminderRoutes from "./routes/reminderRoutes";
+
 const app = express();
+
+app.use(express.json());
 
 app.use(morgan("dev"));
 
@@ -24,8 +28,11 @@ dotenv.config();
 
 app.get("/", (req: Request, res: Response) => {
   res.send("You are on HomePage");
-  console.log("This point is reached.");
 });
+
+// ROUTES
+
+app.use("/api/v1/:user_id/reminders", reminderRoutes);
 
 app.listen(8080, () => {
   console.log("Server running on http://localhost/8080 .");
